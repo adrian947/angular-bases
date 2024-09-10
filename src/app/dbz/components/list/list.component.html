@@ -1,0 +1,30 @@
+<ul class="list-group">
+  <div
+    *ngFor="
+      let character of characterList;
+      index as i;
+      trackBy: trackByItems;
+      first as first;
+      last as last;
+      odd as odd;
+      count as count
+    "
+    class="row"
+  >
+    <li
+      [ngClass]="
+        first
+          ? 'list-group-item list-group-item-warning'
+          : 'list-group-item list-group-item-danger'
+      "
+      class="col"
+
+      >
+      <span class="text-primary">{{ i }}</span>
+      {{ character.name }} - <strong>Power:</strong> {{ character.power }}
+      {{ last ? "es el último, hay un total de " + count : "" }}
+      {{ odd ? "impar" : "par" }}
+    </li>
+    <button class="btn btn-danger col-1" (click)="deleteCharacter(character.id)">X</button>
+  </div>
+</ul>
